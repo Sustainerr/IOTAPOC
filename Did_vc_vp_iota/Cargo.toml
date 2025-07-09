@@ -1,0 +1,28 @@
+[package]
+name    = "my_iota_did"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Async runtime + error handling
+tokio       = { version = "1", features = ["full"] }
+anyhow      = "1.0"
+serde_json  = "1.0"
+rumqttc          = "0.23"
+serde            = { version = "1", features = ["derive"] }
+uuid             = { version = "1", features = ["v4"] }
+rand = "0.8"
+url    = "2"
+base64 = "0.21"
+identity_eddsa_verifier = "1.5.1"
+iota-sdk = { version = "1.0.2", default-features = true, features = ["tls", "client", "stronghold"] }
+
+# IOTA DID method helpers
+identity_iota = { version = "1.5.0", features = ["memstore"] }
+identity_credential = "1.5.1"
+
+# Stronghold-backed storage & signing
+[dependencies.identity_stronghold]
+version          = "1.5.1"
+default-features = false
+features         = ["send-sync-storage"]
